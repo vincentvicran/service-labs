@@ -2,7 +2,7 @@
 import React from 'react';
 import BarGraph from './BarGraph';
 import Rates from './Rates';
-import { Props } from 'pages/index';
+import { Props } from 'utils/typings';
 
 export const Container = ({ data }: Props) => {
     return (

@@ -4,27 +4,17 @@ export interface Data {
     };
     disclaimer: string;
     chartName: string;
-    bpi: {
-        USD: {
-            code: sting;
-            symbol: string;
-            rate: string;
-            description: string;
-            rate_float: number;
-        };
-        GBP: {
-            code: sting;
-            symbol: string;
-            rate: string;
-            description: string;
-            rate_float: number;
-        };
-        EUR: {
-            code: sting;
-            symbol: string;
-            rate: string;
-            description: string;
-            rate_float: number;
-        };
-    };
+    bpi: { USD: Coin; GBP: Coin; EUR: Coin };
+}
+
+export interface Props {
+    data: Data;
+}
+
+export interface Coin {
+    code: sting;
+    symbol: string;
+    rate: string;
+    description: string;
+    rate_float?: number;
 }

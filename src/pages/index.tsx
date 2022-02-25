@@ -1,11 +1,7 @@
 /* eslint-disable react/jsx-key */
 import Container from 'components/Container';
 import Sidebar from 'components/Sidebar';
-import { Data } from 'utils/typings';
-
-export interface Props {
-    data: [Data];
-}
+import { Props } from 'utils/typings';
 
 export async function getStaticProps() {
     const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
