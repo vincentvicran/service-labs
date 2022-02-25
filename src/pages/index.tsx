@@ -1,10 +1,37 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+/* eslint-disable react/jsx-key */
+import Container from 'components/Container';
+import Sidebar from 'components/Sidebar';
+import { Data } from 'utils/typings';
 
-const Home: NextPage = () => {
-    return <div className="bg-secondary-400">Hello</div>;
+export interface Props {
+    data: [Data];
+}
+
+export async function getStaticProps() {
+    const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+    const data = await res.json();
+
+    console.log(data);
+
+    return {
+        props: {
+            data,
+        },
+        revalidate: 10,
+    };
+}
+
+const Home = ({ data }: Props) => {
+    return (
+        <div>
+            <div className="flex w-screen h-screen">
+                <Sidebar />
+                <div className="w-screen ">
+                    <Container data={data} />
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default Home;

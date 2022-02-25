@@ -12,6 +12,10 @@ module.exports = {
             transparent: 'transparent',
             current: 'currentColor',
         },
+        fontFamily: {
+            sans: ['Graphik', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+        },
         extend: {},
     },
     plugins: [],
