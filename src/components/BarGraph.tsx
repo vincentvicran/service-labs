@@ -24,7 +24,7 @@ const BarGraph = () => {
     const coins = [data.bpi.USD, data.bpi.EUR, data.bpi.GBP];
 
     return (
-        <div className=" bg-white m-2  antialiased shadow-sm w-400 border-2 rounded-xl p-3 border-primary-600">
+        <div className=" border-b-2 py-3 mt-1 flex justify-around shadow-2xl rounded-md border-primary-600">
             <div className="border-b p-6 m-4 border-secondary-300">
                 <p className="text-sm font-semibold pb-9 antialiased leading-4">
                     Bar Graph
@@ -35,7 +35,7 @@ const BarGraph = () => {
                     <YAxis dataKey="rate_float" />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="rate_float" fill="#82ca9d" />
+                    <Bar dataKey="rate_float" fill="#191990" />
                 </BarChart>
             </div>
         </div>

@@ -166,12 +166,12 @@ const Rates = ({ data }: Props) => {
             <div className="m-6">
                 <input
                     placeholder="Search..."
-                    className="border-2 rounded-xl p-3 border-info-600"
+                    className="border-b-2 p-3 mt-1 shadow-2xl rounded-md border-info-600"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
             </div>
-            <div className=" bg-white ml-2  w-400 shadow-sm border-2 rounded-xl p-3 border-primary-600">
+            <div className="  ml-2 w-400p-3 border-b-2 py-3 mt-1 shadow-2xl rounded-md border-primary-600">
                 <div className="border-b p-3 border-secondary-100">
                     <p className="font-semibold">Rates</p>
                 </div>
