@@ -7,12 +7,12 @@ import { Props } from 'utils/typings';
 export const Container = ({ data }: Props) => {
     return (
         <div className="flex flex-auto flex-wrap bg-gradient-to-r from-secondary-100 to-secondary-50 h-full justify-center items-center bg-fixed">
-            <div className="flex flex-1 flex-col basis-full px-8 py-1 m-3 justify-center items-center">
-                <div className="flex font-bold text-2xl transform -translate-y-2 antialiased">
+            <div className="flex flex-1 flex-col basis-full px-8 pt-5 m-1 justify-center items-center">
+                <div className="flex font-bold text-2xl transform -translate-y-2 border-b py-4 px-6 mt-1 cursor-pointer justify-around shadow-lg rounded-md antialiased hover:bg-secondary-200">
                     Welcome!
                 </div>
-                <div className="flex text-secondary-500 text-lg antialiased">
-                    Check the rates of bitcoin!
+                <div className="flex text-secondary-500 text-md antialiased">
+                    Check the rates of bitcoin here!
                 </div>
             </div>
             <div className="flex flex-1 flex-wrap  basis-full justify-around">

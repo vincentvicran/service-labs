@@ -15,9 +15,11 @@ const Home = () => {
 
     return (
         <div>
-            <div className="flex w-screen h-screen relative">
-                <Sidebar />
-                <div className="w-screen ">
+            <div className="flex flex-1 w-screen h-screen">
+                <div className="flex shrink  w-px-300">
+                    <Sidebar />
+                </div>
+                <div className="flex flex-1">
                     <Container data={data} />
                 </div>
             </div>

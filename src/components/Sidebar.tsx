@@ -8,8 +8,8 @@ import {
 
 const Sidebar = () => {
     return (
-        <div className="md:w-1/6 w-px-100 h-full shadow-2xl ">
-            <div className=" border-b py-3 mt-1 flex justify-around shadow-lg">
+        <div className="flex flex-1 flex-nowrap flex-col px-7 h-screen shadow-2xl pb-40 md:w-1/6 ">
+            <div className=" border-b py-3 mt-1 flex justify-around shadow-lg rounded-md">
                 <p className="text-xl  font-semibold antialiased">
                     Service Labs
                 </p>
