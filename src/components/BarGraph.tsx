@@ -6,7 +6,6 @@ import { fetcher, swrOptions } from 'utils/swrFetcher';
 import {
     BarChart,
     Bar,
-    Cell,
     XAxis,
     YAxis,
     CartesianGrid,
