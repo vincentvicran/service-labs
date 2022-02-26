@@ -12,15 +12,18 @@
         "@emotion/styled": "^11.8.1",
         "@mui/icons-material": "^5.4.2",
         "@mui/material": "^5.4.3",
-        "chart.js": "^3.7.1",
         "next": "12.1.0",
         "react": "17.0.2",
-        "react-chartjs-2": "^4.0.1",
-        "react-dom": "17.0.2"
+        "react-dom": "17.0.2",
+        "responsive-sortable-react-table": "^1.0.3",
+        "styled-components": "^5.3.3",
+        "styled-react-modal": "^3.0.0"
     },
     "devDependencies": {
         "@types/node": "17.0.21",
         "@types/react": "17.0.39",
+        "@types/styled-components": "^5.1.23",
+        "@types/styled-react-modal": "^1.2.2",
         "autoprefixer": "^10.4.2",
         "eslint": "8.9.0",
         "eslint-config-next": "12.1.0",
