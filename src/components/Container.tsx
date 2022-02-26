@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BarGraph from './BarGraph';
 import Rates from './Rates';
 import { Props } from 'utils/typings';
@@ -20,7 +20,7 @@ export const Container = ({ data }: Props) => {
                     <Rates data={data} />
                 </div>
                 <div className="flex  ml-3 mt-6 space-x-6  mr-4">
-                    <BarGraph />
+                    <BarGraph data={data} />
                 </div>
             </div>
             <div>

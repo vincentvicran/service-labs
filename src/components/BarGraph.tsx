@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React, { useState, useEffect } from 'react';
 import { Props } from 'utils/typings';
-import useSWR from 'swr';
-import { fetcher, swrOptions } from 'utils/swrFetcher';
+
 import {
     BarChart,
     Bar,
@@ -13,13 +12,7 @@ import {
     Legend,
 } from 'recharts';
 
-const BarGraph = () => {
-    const { data, error } = useSWR('coins', fetcher, swrOptions);
-
-    if (error) alert('An error has occured!');
-
-    if (!data) alert('Loading...');
-
+const BarGraph = ({ data }: Props) => {
     const coins = [data.bpi.USD, data.bpi.EUR, data.bpi.GBP];
 
     return (
