@@ -1,26 +1,21 @@
 /* eslint-disable react/jsx-key */
+import React from 'react';
 import Container from 'components/Container';
 import Sidebar from 'components/Sidebar';
 import { Props } from 'utils/typings';
+import useSWR from 'swr';
+import { fetcher, swrOptions } from 'utils/swrFetcher';
 
-export async function getStaticProps() {
-    const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
-    const data = await res.json();
+const Home = () => {
+    const { data, error } = useSWR('coins', fetcher, swrOptions);
 
-    console.log(data);
+    if (error) return 'An error has occured!';
 
-    return {
-        props: {
-            data,
-        },
-        revalidate: 10,
-    };
-}
+    if (!data) return 'Loading...';
 
-const Home = ({ data }: Props) => {
     return (
         <div>
-            <div className="flex w-screen h-screen">
+            <div className="flex w-screen h-screen relative">
                 <Sidebar />
                 <div className="w-screen ">
                     <Container data={data} />

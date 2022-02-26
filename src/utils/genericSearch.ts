@@ -1,7 +1,8 @@
 export default function genericSearch<T>(
     object: T,
     properties: Array<keyof T>,
-    query: string
+    query: string,
+    caseSensitive: boolean
 ): boolean {
     if (query === '') {
         return true;
