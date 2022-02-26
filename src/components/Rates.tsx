@@ -11,14 +11,14 @@ import { Props } from 'utils/typings';
 import genericSearch from 'utils/genericSearch';
 
 export const StyledModal = Modal.styled`
-  width: 20rem;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100000;
-  background-color: white;
-  border-radius: 10%;
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    background-color: white;
+    border-radius: 10%;
 `;
 
 const Rates = ({ data }: Props) => {
@@ -148,7 +148,7 @@ const Rates = ({ data }: Props) => {
     const sortedData = useCallback(
         () =>
             sortData({
-                tableData: data,
+                tableData: coins,
                 sortKey,
                 reverse: sortOrder === 'desc',
             }),
