@@ -1,13 +1,8 @@
 /* eslint-disable react/jsx-key */
-import React, {
-    MouseEventHandler,
-    useState,
-    useEffect,
-    useCallback,
-} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import Modal from 'styled-react-modal';
-import { Props } from 'utils/typings';
+import { Props, Coin, Header, SortHeader } from 'utils/typings';
 import genericSearch from 'utils/genericSearch';
 
 export const StyledModal = Modal.styled`
@@ -41,63 +36,46 @@ const Rates = ({ data }: Props) => {
         description: '',
     });
 
-    const changeModal = (code: string) => {
-        if (code === 'USD') {
-            setModalCoin({
-                code: 'USD',
-                symbol: '&#36;',
-                rate: '38,878.4800',
-                description: 'United States Dollar',
-            });
-        } else if (code === 'EUR') {
-            setModalCoin({
-                code: 'EUR',
-                symbol: '&euro;',
-                rate: '34,758.1776',
-                description: 'Euro',
-            });
-        } else if (code === 'GBP') {
-            setModalCoin({
-                code: 'GBP',
-                symbol: '&pound;',
-                rate: '29,044.2462',
-                description: 'British Pound Sterling',
-            });
-        }
-
-        return {
-            code: '',
-            symbol: '',
-            rate: '',
-            description: '',
-        };
-    };
-
     const toggleModal = () => {
         setIsOpen(!isOpen);
     };
 
     //* states for searching query
-    const queryProperties = ['code', 'symbol', 'rate', 'description'];
-
     const [query, setQuery] = useState('');
 
-    //* states, types and functions for sorting
-    const headers = [
-        { key: 'code', label: 'Code' },
-        { key: 'symbol', label: 'Symbol' },
-        { key: 'rate', label: 'Rate' },
-        { key: 'description', label: 'Description' },
-    ];
+    //* state used as query properties in generic search
+    const [keyArr, setKeyArr] = useState<KeyArr>([
+        'code',
+        'symbol',
+        'rate',
+        'description',
+    ]);
 
+    //* states, types and functions for sorting
     type Data = typeof coins;
 
     type SortKeys = keyof Data[0];
+
+    type KeyArr = SortKeys[];
 
     type SortOrder = 'ascn' | 'desc';
 
     const [sortKey, setSortKey] = useState<SortKeys>('code');
     const [sortOrder, setSortOrder] = useState<SortOrder>('ascn');
+
+    const dataHeaders: SortHeader = {
+        code: { key: 'code', label: 'Code' },
+        symbol: { key: 'symbol', label: 'Symbol' },
+        rate: { key: 'rate', label: 'Rate' },
+        description: { key: 'description', label: 'Description' },
+    };
+
+    const sortHeaders: Header[] = [
+        dataHeaders.code,
+        dataHeaders.symbol,
+        dataHeaders.rate,
+        dataHeaders.description,
+    ];
 
     function sortData({
         tableData,
@@ -121,30 +99,6 @@ const Rates = ({ data }: Props) => {
         return sortedData;
     }
 
-    function SortButton({
-        sortOrder,
-        columnKey,
-        sortKey,
-        onClick,
-    }: {
-        sortOrder: SortOrder;
-        columnKey: SortKeys;
-        sortKey: SortKeys;
-        onClick: MouseEventHandler<HTMLButtonElement>;
-    }) {
-        return (
-            <button
-                onClick={onClick}
-                className={`${
-                    sortKey === columnKey && sortOrder === 'desc'
-                        ? 'sort-button sort-reverse'
-                        : 'sort-button'
-                }`}
-            >
-                ▲
-            </button>
-        );
-    }
     const sortedData = useCallback(
         () =>
             sortData({
@@ -152,7 +106,7 @@ const Rates = ({ data }: Props) => {
                 sortKey,
                 reverse: sortOrder === 'desc',
             }),
-        [data, sortKey, sortOrder]
+        [coins, sortKey, sortOrder]
     );
 
     function changeSort(key: SortKeys) {
@@ -178,21 +132,15 @@ const Rates = ({ data }: Props) => {
                 <table className="table-auto rounded-lg shadow">
                     <thead>
                         <tr className="bg-secondary-300 border border-secondary-200 rounded-lg">
-                            {headers.map((row) => {
+                            {sortHeaders.map((row) => {
+                                const keyHead = row.key as SortKeys;
                                 return (
                                     <th
-                                        key={row.key}
-                                        className="p-3 text-sm font-semibold tracking-wide text-left"
+                                        key={keyHead}
+                                        onClick={() => changeSort(keyHead)}
+                                        className="p-3 cursor-pointer text-sm font-semibold tracking-wide text-left"
                                     >
-                                        {row.label}{' '}
-                                        <SortButton
-                                            columnKey={row.key}
-                                            onClick={() => changeSort(row.key)}
-                                            {...{
-                                                sortOrder,
-                                                sortKey,
-                                            }}
-                                        />
+                                        {row.label}
                                     </th>
                                 );
                             })}
@@ -233,12 +181,7 @@ const Rates = ({ data }: Props) => {
                         </StyledModal>
                         {sortedData()
                             .filter((searchCoin) =>
-                                genericSearch(
-                                    searchCoin,
-                                    queryProperties,
-                                    query,
-                                    false
-                                )
+                                genericSearch(searchCoin, keyArr, query, false)
                             )
                             .map((coin) => {
                                 return (
@@ -259,10 +202,9 @@ const Rates = ({ data }: Props) => {
                                             <button
                                                 id={coin.code}
                                                 className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-secondary-700 rounded-md shadow bg-opacity-50 hover:bg-primary-400"
-                                                onClick={function (e: any) {
+                                                onClick={function () {
                                                     setIsOpen(!isOpen);
-                                                    changeModal(e.target.id);
-                                                    console.log(e.target.id);
+                                                    setModalCoin(coin);
                                                 }}
                                             >
                                                 Details

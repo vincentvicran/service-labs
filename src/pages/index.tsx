@@ -9,6 +9,8 @@ import { fetcher, swrOptions } from 'utils/swrFetcher';
 const Home = () => {
     const { data, error } = useSWR('coins', fetcher, swrOptions);
 
+    if (data) console.log(data);
+
     if (error) return 'An error has occured!';
 
     if (!data) return 'Loading...';

@@ -18,3 +18,15 @@ export interface Coin {
     description: string;
     rate_float?: number;
 }
+
+export interface SortHeader {
+    code: Header;
+    symbol: Header;
+    rate: Header;
+    description: Header;
+}
+
+export interface Header {
+    key: string;
+    label: string;
+}
