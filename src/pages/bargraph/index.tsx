@@ -2,12 +2,8 @@ import BarGraph from 'components/BarGraph';
 import React, { useEffect, useState } from 'react';
 import { Data, Props } from 'utils/typings';
 import Sidebar from 'components/Sidebar';
-import { swrOptions, fetcher } from 'utils/swrFetcher';
-import useSWR from 'swr';
 
-const Bar = () => {
-    const { data, error } = useSWR('bar', fetcher, swrOptions);
-
+const Bar = ({ data }: Props) => {
     return (
         <div className="flex flex-1 justify-center items-center">
             <div className="flex flex-1 w-screen h-screen">
