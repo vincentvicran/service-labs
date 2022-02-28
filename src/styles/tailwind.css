@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-secondary-50 text-secondary-900 dark:bg-secondary-900 dark:text-secondary-100;
+        @apply min-h-screen;
+    }
+}
+
+.theme-light {
+    --text: theme(colors.primary.50);
+    --bg-color: theme(colors.secondary.900);
+    --primary: theme(colors.primary.900);
+    --secondary: theme(colors.secondary.900);
+    --info: theme(colors.info.900);
+    --danger: theme(colors.danger.900);
+}
+
+.theme-dark {
+    --text: theme(colors.secondary.900);
+    --bg-color: theme(colors.secondary.100);
+    --primary: theme(colors.primary.900);
+    --secondary: theme(colors.secondary.900);
+    --info: theme(colors.info.900);
+    --danger: theme(colors.danger.900);
+}
