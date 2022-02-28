@@ -1,7 +1,22 @@
+import BarGraph from 'components/BarGraph';
 import React from 'react';
+import { Props } from 'utils/typings';
+import Sidebar from 'components/Sidebar';
+import { data } from 'utils/data';
 
 const index = () => {
-    return <div>Bargraph</div>;
+    return (
+        <div className="flex flex-1 justify-center items-center">
+            <div className="flex flex-1 w-screen h-screen">
+                <div className="flex shrink  w-px-300">
+                    <Sidebar />
+                </div>
+                <div className="flex flex-1 justify-center items-center">
+                    <BarGraph data={data} />
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default index;

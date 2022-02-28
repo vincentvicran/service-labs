@@ -1,6 +1,6 @@
 export interface Data {
     time: {
-        updated: Date;
+        updated: string;
     };
     disclaimer: string;
     chartName: string;

@@ -21,7 +21,9 @@ const Sidebar = () => {
                         <Link href="/" passHref>
                             <div className="flex p-3 text-secondary-700  space-x-4 0 hover:bg-secondary-50 hover:border-b rounded-lg cursor-pointer  ">
                                 <SearchRounded className="text-secondary-700" />
-                                <p className="text-secondary-700  ">Search</p>
+                                <p className="text-secondary-700  ">
+                                    Dashboard
+                                </p>
                             </div>
                         </Link>
                     </div>
