@@ -16,23 +16,25 @@ const Sidebar = () => {
             </div>
             <div className="p-4 space-y-14">
                 <div className="space-y-4">
-                    <h1 className="text-gray-400">Dashboard</h1>
+                    <h1 className="text-gray-500 font-medium subpixel-antialiased">
+                        Dashboard
+                    </h1>
                     <div className="">
-                        <div className="flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-50 hover:text-blue-600  cursor-pointer  ">
-                            <SearchRounded className="text-gray-300" />
-                            <p className="text-gray-600  ">Search</p>
+                        <div className="flex p-3 text-secondary-700  space-x-4 0 hover:bg-secondary-50 hover:border-b rounded-lg cursor-pointer  ">
+                            <SearchRounded className="text-secondary-700" />
+                            <p className="text-secondary-700  ">Search</p>
                         </div>
                     </div>
                     <div className="">
-                        <div className="flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-50 hover:text-blue-600  cursor-pointer  ">
-                            <BarChartRounded className="text-gray-300" />
-                            <p className="text-gray-600  ">Bar Graph</p>
+                        <div className="flex p-3 text-secondary-700  space-x-4 0 hover:bg-secondary-50 hover:border-b rounded-lg  cursor-pointer  ">
+                            <BarChartRounded className="text-secondary-700" />
+                            <p className="text-secondary-700  ">Bar Graph</p>
                         </div>
                     </div>
                     <div className="">
-                        <div className="flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-50 hover:text-blue-600  cursor-pointer  ">
-                            <ClearAllRounded className="text-gray-300" />
-                            <p className="text-gray-600  ">Rates</p>
+                        <div className="flex p-3 text-secondary-700  space-x-4 0 hover:bg-secondary-50 hover:border-b rounded-lg  cursor-pointer  ">
+                            <ClearAllRounded className="text-secondary-700" />
+                            <p className="text-secondary-700  ">Rates</p>
                         </div>
                     </div>
                 </div>
