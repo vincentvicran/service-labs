@@ -1,22 +1,27 @@
 import BarGraph from 'components/BarGraph';
-import React from 'react';
-import { Props } from 'utils/typings';
+import React, { useEffect, useState } from 'react';
+import { Data, Props } from 'utils/typings';
 import Sidebar from 'components/Sidebar';
-import { data } from 'utils/data';
+import { swrOptions, fetcher } from 'utils/swrFetcher';
+import useSWR from 'swr';
 
-const index = () => {
+const Bar = () => {
+    const { data, error } = useSWR('bar', fetcher, swrOptions);
+
     return (
         <div className="flex flex-1 justify-center items-center">
             <div className="flex flex-1 w-screen h-screen">
                 <div className="flex shrink  w-px-300">
                     <Sidebar />
                 </div>
-                <div className="flex flex-1 justify-center items-center">
-                    <BarGraph data={data} />
-                </div>
+                {data && (
+                    <div className="flex flex-1 justify-center items-center">
+                        <BarGraph data={data} />
+                    </div>
+                )}
             </div>
         </div>
     );
 };
 
-export default index;
+export default Bar;

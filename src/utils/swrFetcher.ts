@@ -3,7 +3,7 @@ export const fetcher = async () => {
         'https://api.coindesk.com/v1/bpi/currentprice.json'
     );
     const data = await res.json();
-
+    console.log(data);
     return data;
 };
 

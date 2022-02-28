@@ -21,7 +21,6 @@ export interface Coin {
 
 export interface SortHeader {
     code: Header;
-    symbol: Header;
     rate: Header;
     description: Header;
 }

@@ -2,9 +2,12 @@ import Rates from 'components/Rates';
 import React from 'react';
 import { Props } from 'utils/typings';
 import Sidebar from 'components/Sidebar';
-import { data } from 'utils/data';
+import { swrOptions, fetcher } from 'utils/swrFetcher';
+import useSWR from 'swr';
 
-const index = () => {
+//! const index =() => {
+const Rate = () => {
+    const { data, error } = useSWR('bar', fetcher, swrOptions);
     return (
         <div className="flex flex-1 justify-center items-center">
             <div className="flex flex-1 w-screen h-screen">
@@ -19,4 +22,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Rate;

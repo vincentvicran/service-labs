@@ -18,14 +18,7 @@ export const StyledModal = Modal.styled`
 
 const Rates = ({ data }: Props) => {
     //* states for coins data handling
-    const [coins, setCoins] = useState([
-        data.bpi.USD,
-        data.bpi.GBP,
-        data.bpi.EUR,
-    ]);
-    useEffect(() => {
-        setCoins([data.bpi.USD, data.bpi.GBP, data.bpi.EUR]);
-    }, [data.bpi.USD, data.bpi.GBP, data.bpi.EUR]);
+    const coins = [data.bpi.USD, data.bpi.GBP, data.bpi.EUR];
 
     //* states and functions for Modal
     const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +39,6 @@ const Rates = ({ data }: Props) => {
     //* state used as query properties in generic search
     const [keyArr, setKeyArr] = useState<KeyArr>([
         'code',
-        'symbol',
         'rate',
         'description',
     ]);
@@ -65,14 +57,12 @@ const Rates = ({ data }: Props) => {
 
     const dataHeaders: SortHeader = {
         code: { key: 'code', label: 'Code' },
-        symbol: { key: 'symbol', label: 'Symbol' },
         rate: { key: 'rate', label: 'Rate' },
         description: { key: 'description', label: 'Description' },
     };
 
     const sortHeaders: Header[] = [
         dataHeaders.code,
-        dataHeaders.symbol,
         dataHeaders.rate,
         dataHeaders.description,
     ];
@@ -167,10 +157,13 @@ const Rates = ({ data }: Props) => {
                                     <p className="text-secondary-900 p-2 m-1 text-sm hover:bg-secondary-300 border border-secondary-200 rounded-lg shadow ">
                                         {modalCoin.code}
                                     </p>
+
                                     <p className="text-secondary-900  p-2 m-1 text-sm  hover:bg-secondary-300 border border-secondary-200 rounded-lg shadow">
-                                        {modalCoin.symbol}
-                                    </p>
-                                    <p className="text-secondary-900  p-2 m-1 text-sm  hover:bg-secondary-300 border border-secondary-200 rounded-lg shadow">
+                                        <span
+                                            dangerouslySetInnerHTML={{
+                                                __html: modalCoin.symbol,
+                                            }}
+                                        ></span>{' '}
                                         {modalCoin.rate}
                                     </p>
                                     <p className="text-secondary-900  p-2 m-1 text-sm  hover:bg-secondary-300 border border-secondary-200 rounded-lg shadow">
@@ -189,10 +182,13 @@ const Rates = ({ data }: Props) => {
                                         <td className="p-3 text-sm text-secondary-700">
                                             {coin.code}
                                         </td>
+
                                         <td className="p-3 text-sm text-secondary-700">
-                                            {coin.symbol}
-                                        </td>
-                                        <td className="p-3 text-sm text-secondary-700">
+                                            <span
+                                                dangerouslySetInnerHTML={{
+                                                    __html: coin.symbol,
+                                                }}
+                                            ></span>{' '}
                                             {coin.rate}
                                         </td>
                                         <td className="p-3 text-sm text-secondary-700">
